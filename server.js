@@ -5,8 +5,7 @@
 * 
 *  Name: _Yash A. Akbari_ Student ID: _126403229_ Date: _ 12-03-2023 _
 *
-*  Online (Cyclic) Link: https://poised-dove-threads.cyclic.cloud/about
-
+*  Online (Cyclic) Link: https://easy-blue-goldfish-slip.cyclic.app/blog
 ********************************************************************************/
 // const stripJs = require("strip-js");
 // const multer = require("multer");
