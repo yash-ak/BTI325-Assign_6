@@ -1,0 +1,65 @@
+// Do not expose your Neon credentials to the browser
+// .env
+PGHOST='ep-solitary-base-45358364-pooler.us-east-2.aws.neon.tech'
+PGDATABASE='SenecaDB'
+PGUSER='yash-ak'
+PGPASSWORD='3TtiZMLyx2lo'
+ENDPOINT_ID='ep-solitary-base-45358364-pooler'
+
+// app.js
+const postgres = require('postgres');
+require('dotenv').config();
+
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+
+const sql = postgres({
+  host: PGHOST,
+  database: PGDATABASE,
+  username: PGUSER,
+  password: PGPASSWORD,
+  port: 5432,
+  ssl: 'require',
+  connection: {
+    options: `project=${ENDPOINT_ID}`,
+  },
+});
+
+async function getPgVersion() {
+  const result = await sql`select version()`;
+  console.log(result);
+}
+
+getPgVersion();
+
+
+Mongo Atlas Login Username :- yashak3322
+Pass - DlaPnfX4GiCafHht
+
+Connection String :- mongodb+srv://yashak3322:DlaPnfX4GiCafHht@cluster0.mn0mb4w.mongodb.net/?retryWrites=true&w=majority
+
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://yashak3322:DlaPnfX4GiCafHht@cluster0.mn0mb4w.mongodb.net/?retryWrites=true&w=majority";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
